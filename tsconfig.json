@@ -17,7 +17,13 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@nestandkey/constants": ["src/shared/constants"],
+      "@nestandkey/constants/*": ["src/shared/constants/*"],
+      "@nestandkey/utils": ["src/shared/utils"],
+      "@nestandkey/utils/*": ["src/shared/utils/*"],
+      "@nestandkey/types": ["src/shared/types"],
+      "@nestandkey/types/*": ["src/shared/types/*"]
     }
   },
   "include": ["src"]

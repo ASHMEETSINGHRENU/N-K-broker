@@ -1,4 +1,6 @@
-const BASE_URL = '/api/v1';
+const BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.PROD ? 'https://n-k-server-1.onrender.com/api/v1' : '/api/v1');
 
 export async function fetchBrokerApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const token = localStorage.getItem('nestandkey_broker_token');

@@ -15,7 +15,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': path.resolve(__dirname, './src'),
+      '@nestandkey/constants': path.resolve(__dirname, './src/shared/constants'),
+      '@nestandkey/utils': path.resolve(__dirname, './src/shared/utils'),
+      '@nestandkey/types': path.resolve(__dirname, './src/shared/types')
     }
   }
 });
