@@ -83,5 +83,18 @@ export const brokerApi = {
       method: 'POST',
       body: JSON.stringify(data)
     }),
-  getProfile: () => fetchBrokerApi<{ success: boolean; broker: any; properties: any[] }>('/brokers/profile')
+  getProfile: () => fetchBrokerApi<{ success: boolean; broker: any; properties: any[] }>('/brokers/profile'),
+  sendClientNotification: (data: {
+    recipientEmail?: string;
+    recipientId?: string;
+    title: string;
+    message: string;
+    link?: string;
+    type?: string;
+  }) =>
+    fetchBrokerApi<{ success: boolean; message: string; notification: any }>('/notifications/send', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
 };
+

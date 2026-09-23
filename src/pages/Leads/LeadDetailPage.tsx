@@ -13,7 +13,8 @@ import {
   Send,
   Building2,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  Bell
 } from 'lucide-react';
 
 export const LeadDetailPage: React.FC = () => {
@@ -32,6 +33,46 @@ export const LeadDetailPage: React.FC = () => {
   const [viewingDate, setViewingDate] = useState('');
   const [viewingSlot, setViewingSlot] = useState('15:00 - 16:30 GST');
   const [isScheduling, setIsScheduling] = useState(false);
+
+  // Direct Client Notification state
+  const [isNotifyModalOpen, setIsNotifyModalOpen] = useState(false);
+  const [notifyTitle, setNotifyTitle] = useState('');
+  const [notifyMessage, setNotifyMessage] = useState('');
+  const [notifyType, setNotifyType] = useState('STATUS_CHANGE');
+  const [isSendingNotify, setIsSendingNotify] = useState(false);
+  const [notifySuccess, setNotifySuccess] = useState(false);
+
+  const handleSendClientNotification = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!lead || !notifyMessage.trim()) return;
+    setIsSendingNotify(true);
+    try {
+      await brokerApi.sendClientNotification({
+        recipientEmail: lead.email,
+        title: notifyTitle.trim() || `Update on ${lead.property?.title || 'your residence inquiry'}`,
+        message: notifyMessage.trim(),
+        type: notifyType,
+        link: '/profile'
+      });
+      // Also log as broker activity note
+      await brokerApi.addLeadNote(
+        lead._id,
+        `Notification sent to client: "${notifyTitle.trim() || 'Property Update'}" - ${notifyMessage.trim()}`
+      );
+      setNotifySuccess(true);
+      setTimeout(() => {
+        setNotifySuccess(false);
+        setIsNotifyModalOpen(false);
+        setNotifyTitle('');
+        setNotifyMessage('');
+      }, 2000);
+      await loadData();
+    } catch (err: any) {
+      alert(err.message || 'Failed to send notification to client');
+    } finally {
+      setIsSendingNotify(false);
+    }
+  };
 
   const loadData = async () => {
     if (!id) return;
@@ -182,7 +223,7 @@ export const LeadDetailPage: React.FC = () => {
             </div>
 
             {/* Direct Communication Buttons */}
-            <div className="grid grid-cols-3 gap-3 pt-4 border-t border-[#2A2A2D]">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-[#2A2A2D]">
               <a
                 href={`https://wa.me/${cleanPhone}`}
                 target="_blank"
@@ -205,6 +246,16 @@ export const LeadDetailPage: React.FC = () => {
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Book Viewing</span>
+              </button>
+              <button
+                onClick={() => {
+                  setNotifyTitle(`Update from Elena Rostova: ${lead.property?.title || 'Private Residence'}`);
+                  setIsNotifyModalOpen(true);
+                }}
+                className="py-2.5 bg-[#262629] hover:bg-[#3E3E42] text-[#C5A880] border border-[#C5A880]/50 flex items-center justify-center gap-1.5 uppercase font-semibold text-[11px]"
+              >
+                <Bell className="w-3.5 h-3.5" />
+                <span>Notify Client</span>
               </button>
             </div>
           </div>
@@ -380,6 +431,111 @@ export const LeadDetailPage: React.FC = () => {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Notify Client Modal */}
+      {isNotifyModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0B0C]/80 backdrop-blur-sm">
+          <div className="bg-[#18181A] border border-[#2A2A2D] max-w-md w-full p-6 text-[#F7F5F0] space-y-4 text-xs">
+            <div className="flex justify-between items-center pb-3 border-b border-[#2A2A2D]">
+              <div className="flex items-center gap-2">
+                <Bell className="w-4 h-4 text-[#C5A880]" />
+                <h3 className="font-serif text-xl font-light">Send Client Notification</h3>
+              </div>
+              <button
+                onClick={() => setIsNotifyModalOpen(false)}
+                className="text-[#71717A] hover:text-[#F7F5F0]"
+              >
+                ✕
+              </button>
+            </div>
+
+            {notifySuccess ? (
+              <div className="py-6 text-center space-y-2">
+                <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto" />
+                <p className="font-serif text-lg text-white">Notification Transmitted</p>
+                <p className="text-xs text-[#A1A1AA]">
+                  Client {lead.name} ({lead.email}) received this property alert in real-time.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSendClientNotification} className="space-y-4">
+                <div>
+                  <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
+                    Recipient Client
+                  </label>
+                  <input
+                    type="text"
+                    disabled
+                    value={`${lead.name} (${lead.email})`}
+                    className="w-full bg-[#121214] border border-[#2A2A2D] p-2 text-xs text-[#A1A1AA] cursor-not-allowed font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
+                    Alert Title / Subject *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={notifyTitle}
+                    onChange={(e) => setNotifyTitle(e.target.value)}
+                    placeholder="e.g. Viewing confirmation or off-market opportunity"
+                    className="w-full bg-[#121214] border border-[#2A2A2D] p-2 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
+                    Notification Category
+                  </label>
+                  <select
+                    value={notifyType}
+                    onChange={(e) => setNotifyType(e.target.value)}
+                    className="w-full bg-[#121214] border border-[#2A2A2D] p-2 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                  >
+                    <option value="STATUS_CHANGE">Pipeline Status Update</option>
+                    <option value="VIEWING_SCHEDULED">Viewing Itinerary & Slot</option>
+                    <option value="BROKER_ASSIGNED">Broker Mandate Introduction</option>
+                    <option value="GENERAL">Confidential Property Advisory Note</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
+                    Client Notification Message *
+                  </label>
+                  <textarea
+                    rows={4}
+                    required
+                    value={notifyMessage}
+                    onChange={(e) => setNotifyMessage(e.target.value)}
+                    placeholder="Enter message text that will be displayed in the client's notification bell and profile..."
+                    className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                  />
+                </div>
+
+                <div className="pt-2 flex justify-end gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsNotifyModalOpen(false)}
+                    className="px-4 py-2 border border-[#2A2A2D] text-xs uppercase text-[#A3A3A8]"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isSendingNotify}
+                    className="px-4 py-2 bg-[#C5A880] hover:bg-[#B8976C] text-[#18181A] font-semibold text-xs uppercase tracking-wider disabled:opacity-50"
+                  >
+                    {isSendingNotify ? 'Transmitting...' : 'Send Live Alert'}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       )}
