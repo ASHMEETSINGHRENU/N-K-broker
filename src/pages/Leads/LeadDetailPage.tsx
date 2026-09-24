@@ -41,14 +41,17 @@ export const LeadDetailPage: React.FC = () => {
   const [notifyType, setNotifyType] = useState('STATUS_CHANGE');
   const [isSendingNotify, setIsSendingNotify] = useState(false);
   const [notifySuccess, setNotifySuccess] = useState(false);
+  const [notifyError, setNotifyError] = useState<string | null>(null);
 
   const handleSendClientNotification = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!lead || !notifyMessage.trim()) return;
     setIsSendingNotify(true);
+    setNotifyError(null);
     try {
       await brokerApi.sendClientNotification({
         recipientEmail: lead.email,
+        recipientName: lead.name,
         title: notifyTitle.trim() || `Update on ${lead.property?.title || 'your residence inquiry'}`,
         message: notifyMessage.trim(),
         type: notifyType,
@@ -68,7 +71,7 @@ export const LeadDetailPage: React.FC = () => {
       }, 2000);
       await loadData();
     } catch (err: any) {
-      alert(err.message || 'Failed to send notification to client');
+      setNotifyError(err.message || 'Failed to send notification to client');
     } finally {
       setIsSendingNotify(false);
     }
@@ -462,6 +465,13 @@ export const LeadDetailPage: React.FC = () => {
               </div>
             ) : (
               <form onSubmit={handleSendClientNotification} className="space-y-4">
+                {notifyError && (
+                  <div className="p-3 bg-red-950/40 border border-red-800 text-red-200 text-xs font-mono flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>{notifyError}</span>
+                  </div>
+                )}
+
                 <div>
                   <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
                     Recipient Client

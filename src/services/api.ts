@@ -87,6 +87,7 @@ export const brokerApi = {
   sendClientNotification: (data: {
     recipientEmail?: string;
     recipientId?: string;
+    recipientName?: string;
     title: string;
     message: string;
     link?: string;
@@ -95,6 +96,16 @@ export const brokerApi = {
     fetchBrokerApi<{ success: boolean; message: string; notification: any }>('/notifications/send', {
       method: 'POST',
       body: JSON.stringify(data)
+    }),
+  getNotifications: () =>
+    fetchBrokerApi<{ success: boolean; count: number; unreadCount: number; notifications: any[] }>('/notifications'),
+  markNotificationAsRead: (id: string) =>
+    fetchBrokerApi<{ success: boolean; notification: any }>(`/notifications/${id}/read`, {
+      method: 'PATCH'
+    }),
+  markAllNotificationsAsRead: () =>
+    fetchBrokerApi<{ success: boolean; message: string }>('/notifications/read-all', {
+      method: 'PATCH'
     })
 };
 

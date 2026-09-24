@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { BrokerAuthProvider, useBrokerAuth } from './context/AuthContext';
+import { BrokerNotificationProvider } from './context/NotificationContext';
 import { BrokerLayout } from './layouts/BrokerLayout';
 import { LoginPage } from './pages/Login/LoginPage';
 import { DashboardPage } from './pages/Dashboard/DashboardPage';
@@ -26,7 +27,8 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 export const App: React.FC = () => {
   return (
     <BrokerAuthProvider>
-      <BrowserRouter>
+      <BrokerNotificationProvider>
+        <BrowserRouter>
         <Routes>
           <Route path="/broker/login" element={<LoginPage />} />
           <Route
@@ -53,6 +55,7 @@ export const App: React.FC = () => {
           <Route path="*" element={<Navigate to="/broker/dashboard" replace />} />
         </Routes>
       </BrowserRouter>
+      </BrokerNotificationProvider>
     </BrokerAuthProvider>
   );
 };
