@@ -4,31 +4,59 @@ export default {
   theme: {
     extend: {
       colors: {
-        charcoal: {
-          DEFAULT: '#18181A',
-          deep: '#121214',
-          border: '#2A2A2D',
-          muted: '#3E3E42',
-          light: '#262629'
+        navy: {
+          deep: '#102A43',
+          midnight: '#0B2135',
+          harbour: '#1E3A5F',
+          DEFAULT: '#102A43'
         },
-        'soft-black': '#0B0B0C',
         ivory: {
-          DEFAULT: '#F7F5F0',
-          warm: '#FDFCF9',
-          cream: '#EFECE6',
-          border: '#E5E0D8'
+          warm: '#F7F3EA',
+          DEFAULT: '#F7F3EA',
+          cream: '#E9E1D4',
+          border: '#E9E1D4'
+        },
+        'warm-white': '#FFFDF8',
+        stone: {
+          soft: '#E9E1D4',
+          DEFAULT: '#E9E1D4'
+        },
+        brass: {
+          champagne: '#B08D57',
+          DEFAULT: '#B08D57'
         },
         gold: {
-          light: '#E6D5BE',
-          DEFAULT: '#C5A880',
-          hover: '#B8976C',
-          deep: '#9E7E55',
-          accent: '#D4AF37'
-        }
+          soft: '#D8C3A5',
+          DEFAULT: '#B08D57',
+          light: '#D8C3A5',
+          hover: '#9B7A49'
+        },
+        slate: {
+          text: '#3E4852',
+          DEFAULT: '#3E4852'
+        },
+        grey: {
+          muted: '#6B7280',
+          DEFAULT: '#6B7280'
+        },
+        sage: {
+          muted: '#5D7A65',
+          DEFAULT: '#5D7A65'
+        },
+        charcoal: {
+          DEFAULT: '#102A43',
+          deep: '#0B2135',
+          border: '#E9E1D4',
+          muted: '#3E4852',
+          light: '#1E3A5F'
+        },
+        'soft-black': '#0B2135'
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'serif'],
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'sans-serif']
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'Arial', 'sans-serif'],
+        ui: ['"DM Sans"', 'Arial', 'sans-serif']
       }
     },
   },

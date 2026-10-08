@@ -34,12 +34,12 @@ export const ViewingsPage: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between pb-6 border-b border-[#2A2A2D]">
+      <div className="flex items-center justify-between pb-6 border-b border-[#E9E1D4]">
         <div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#C5A880] font-mono font-semibold">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-[#B08D57] font-mono font-semibold">
             On-Site VIP Operations
           </span>
-          <h1 className="font-serif text-3xl font-light text-[#F7F5F0]">
+          <h1 className="font-display text-3xl font-light text-[#102A43]">
             Private Viewings Calendar
           </h1>
         </div>
@@ -48,11 +48,11 @@ export const ViewingsPage: React.FC = () => {
       {isLoading ? (
         <div className="space-y-3">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="h-24 bg-[#18181A] border border-[#2A2A2D] animate-pulse" />
+            <div key={i} className="h-24 bg-[#FFFDF8] border border-[#E9E1D4] animate-pulse" />
           ))}
         </div>
       ) : viewings.length === 0 ? (
-        <div className="text-center py-24 bg-[#18181A] border border-[#2A2A2D] p-8 text-xs text-[#71717A]">
+        <div className="text-center py-24 bg-[#FFFDF8] border border-[#E9E1D4] p-8 text-xs text-[#6B7280] shadow-sm">
           No private viewing appointments registered.
         </div>
       ) : (
@@ -60,26 +60,26 @@ export const ViewingsPage: React.FC = () => {
           {viewings.map((v) => (
             <div
               key={v._id}
-              className="bg-[#18181A] border border-[#2A2A2D] p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 text-xs"
+              className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 text-xs shadow-sm"
             >
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] uppercase font-mono font-bold text-[#C5A880] bg-[#C5A880]/10 px-2 py-0.5 border border-[#C5A880]/30">
+                  <span className="text-[10px] uppercase font-mono font-bold text-[#B08D57] bg-[#F7F3EA] px-2 py-0.5 border border-[#B08D57]">
                     {new Date(v.viewingDate).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}
                   </span>
-                  <span className="text-xs text-[#F7F5F0] font-medium">{v.viewingTimeSlot}</span>
-                  <span className="bg-[#262629] text-[9px] uppercase px-2 py-0.5 text-[#A3A3A8]">
+                  <span className="text-xs text-[#102A43] font-medium">{v.viewingTimeSlot}</span>
+                  <span className="bg-[#F7F3EA] border border-[#E9E1D4] text-[9px] uppercase px-2 py-0.5 text-[#6B7280] font-mono">
                     {v.status}
                   </span>
                 </div>
 
-                <h3 className="font-serif text-xl font-medium text-[#F7F5F0]">
+                <h3 className="font-display text-xl font-medium text-[#102A43]">
                   {v.property?.title || 'Private Residence'}
                 </h3>
 
-                <div className="flex items-center gap-4 text-[#71717A] text-[11px]">
-                  <span>Client / Lead: <span className="text-[#F7F5F0]">{v.lead?.name || 'Private VIP'}</span></span>
-                  <span>Meeting: <span className="text-[#F7F5F0]">{v.meetingPoint || 'Concierge Desk'}</span></span>
+                <div className="flex items-center gap-4 text-[#6B7280] text-[11px]">
+                  <span>Client / Lead: <span className="text-[#102A43] font-medium">{v.lead?.name || 'Private VIP'}</span></span>
+                  <span>Meeting: <span className="text-[#102A43] font-medium">{v.meetingPoint || 'Concierge Desk'}</span></span>
                 </div>
               </div>
 
@@ -88,7 +88,7 @@ export const ViewingsPage: React.FC = () => {
                 {v.status !== 'COMPLETED' && (
                   <button
                     onClick={() => handleUpdateStatus(v._id, 'COMPLETED')}
-                    className="px-3 py-1.5 bg-emerald-950 text-emerald-400 hover:bg-emerald-900 border border-emerald-800 uppercase text-[10px] tracking-wider font-semibold"
+                    className="px-3 py-1.5 bg-emerald-50 text-[#5D7A65] hover:bg-emerald-100 border border-emerald-200 uppercase text-[10px] tracking-wider font-semibold transition-colors"
                   >
                     Mark Completed
                   </button>
@@ -96,7 +96,7 @@ export const ViewingsPage: React.FC = () => {
                 {v.status !== 'CANCELLED' && (
                   <button
                     onClick={() => handleUpdateStatus(v._id, 'CANCELLED')}
-                    className="px-3 py-1.5 bg-zinc-900 text-zinc-400 hover:text-red-400 border border-zinc-800 uppercase text-[10px] tracking-wider"
+                    className="px-3 py-1.5 bg-[#FFFDF8] text-[#6B7280] hover:text-red-600 border border-[#E9E1D4] uppercase text-[10px] tracking-wider transition-colors"
                   >
                     Cancel
                   </button>

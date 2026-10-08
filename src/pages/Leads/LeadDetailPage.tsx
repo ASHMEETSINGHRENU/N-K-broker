@@ -153,34 +153,34 @@ export const LeadDetailPage: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between pb-6 border-b border-[#2A2A2D]">
+      <div className="flex items-center justify-between pb-6 border-b border-[#E9E1D4]">
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/broker/leads')}
-            className="p-2 border border-[#2A2A2D] text-[#A3A3A8] hover:text-[#F7F5F0]"
+            className="p-2 border border-[#E9E1D4] text-[#6B7280] hover:text-[#102A43] bg-[#FFFDF8] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] uppercase tracking-[0.25em] text-[#C5A880] font-mono font-semibold">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-[#B08D57] font-mono font-semibold">
                 {lead.leadId}
               </span>
-              <span className="bg-[#262629] text-[9px] uppercase tracking-wider text-[#A3A3A8] px-2 py-0.5">
+              <span className="bg-[#F7F3EA] text-[9px] uppercase tracking-wider text-[#6B7280] border border-[#E9E1D4] px-2 py-0.5 font-medium">
                 {lead.leadType}
               </span>
             </div>
-            <h1 className="font-serif text-3xl font-light text-[#F7F5F0]">{lead.name}</h1>
+            <h1 className="font-display text-3xl font-light text-[#102A43]">{lead.name}</h1>
           </div>
         </div>
 
         {/* Status Dropdown */}
         <div className="flex items-center gap-3">
-          <span className="text-[10px] uppercase tracking-wider text-[#71717A]">Pipeline Stage:</span>
+          <span className="text-[10px] uppercase tracking-wider text-[#6B7280] font-mono">Pipeline Stage:</span>
           <select
             value={lead.status}
             onChange={(e) => handleStatusChange(e.target.value)}
-            className="bg-[#18181A] border border-[#C5A880] text-[#C5A880] text-xs font-semibold uppercase tracking-wider px-3 py-1.5 focus:outline-none"
+            className="bg-[#FFFDF8] border border-[#B08D57] text-[#102A43] text-xs font-semibold uppercase tracking-wider px-3 py-1.5 focus:outline-none shadow-sm"
           >
             <option value="NEW">NEW</option>
             <option value="CONTACTED">CONTACTED</option>
@@ -197,10 +197,10 @@ export const LeadDetailPage: React.FC = () => {
         {/* Left Column (7 cols): Client Information & Communications */}
         <div className="lg:col-span-7 space-y-6">
           {/* Confidential Contact Workspace */}
-          <div className="bg-[#18181A] border border-[#2A2A2D] p-6 space-y-4 text-xs">
-            <div className="flex items-center justify-between pb-3 border-b border-[#2A2A2D]">
-              <h3 className="font-serif text-xl font-light text-[#F7F5F0]">Confidential Contact Details</h3>
-              <div className="flex items-center gap-1 text-[10px] text-[#C5A880] font-mono">
+          <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 space-y-4 text-xs shadow-sm">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E9E1D4]">
+              <h3 className="font-display text-xl font-normal text-[#102A43]">Confidential Contact Details</h3>
+              <div className="flex items-center gap-1 text-[10px] text-[#B08D57] font-mono">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>Authorized Broker Clearance</span>
               </div>
@@ -208,46 +208,46 @@ export const LeadDetailPage: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <span className="text-[#71717A] block mb-0.5 text-[10px] uppercase">Mobile Telephone</span>
-                <span className="font-mono text-sm text-[#F7F5F0] font-medium">{lead.mobile}</span>
+                <span className="text-[#6B7280] block mb-0.5 text-[10px] uppercase font-mono">Mobile Telephone</span>
+                <span className="font-mono text-sm text-[#102A43] font-medium">{lead.mobile}</span>
               </div>
               <div>
-                <span className="text-[#71717A] block mb-0.5 text-[10px] uppercase">Email Address</span>
-                <span className="font-mono text-sm text-[#F7F5F0] font-medium">{lead.email}</span>
+                <span className="text-[#6B7280] block mb-0.5 text-[10px] uppercase font-mono">Email Address</span>
+                <span className="font-mono text-sm text-[#102A43] font-medium">{lead.email}</span>
               </div>
               <div>
-                <span className="text-[#71717A] block mb-0.5 text-[10px] uppercase">Preferred Channel</span>
-                <span className="text-[#C5A880] font-semibold uppercase">{lead.preferredContactMethod}</span>
+                <span className="text-[#6B7280] block mb-0.5 text-[10px] uppercase font-mono">Preferred Channel</span>
+                <span className="text-[#B08D57] font-semibold uppercase">{lead.preferredContactMethod}</span>
               </div>
               <div>
-                <span className="text-[#71717A] block mb-0.5 text-[10px] uppercase">Lead Source</span>
-                <span className="text-[#A3A3A8] font-mono">{lead.source}</span>
+                <span className="text-[#6B7280] block mb-0.5 text-[10px] uppercase font-mono">Lead Source</span>
+                <span className="text-[#3E4852] font-mono">{lead.source}</span>
               </div>
             </div>
 
             {/* Direct Communication Buttons */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-[#2A2A2D]">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-[#E9E1D4]">
               <a
                 href={`https://wa.me/${cleanPhone}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 bg-[#25D366]/20 hover:bg-[#25D366]/30 text-[#25D366] border border-[#25D366]/40 flex items-center justify-center gap-1.5 uppercase font-semibold text-[11px]"
+                className="py-2.5 bg-emerald-50 hover:bg-emerald-100 text-[#5D7A65] border border-emerald-200 flex items-center justify-center gap-1.5 uppercase font-semibold text-[11px] transition-colors"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
                 <span>WhatsApp</span>
               </a>
               <a
                 href={`tel:${cleanPhone}`}
-                className="py-2.5 bg-[#262629] hover:bg-[#3E3E42] text-[#F7F5F0] border border-[#2A2A2D] flex items-center justify-center gap-1.5 uppercase font-medium text-[11px]"
+                className="py-2.5 bg-[#FFFDF8] hover:bg-[#F7F3EA] text-[#102A43] border border-[#E9E1D4] flex items-center justify-center gap-1.5 uppercase font-medium text-[11px] transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call Client</span>
               </a>
               <button
                 onClick={() => setIsViewingModalOpen(true)}
-                className="py-2.5 bg-[#C5A880] hover:bg-[#B8976C] text-[#18181A] flex items-center justify-center gap-1.5 uppercase font-semibold text-[11px]"
+                className="py-2.5 bg-[#102A43] hover:bg-[#1E3A5F] text-[#FFFDF8] flex items-center justify-center gap-1.5 uppercase font-semibold text-[11px] transition-colors shadow-sm"
               >
-                <Calendar className="w-3.5 h-3.5" />
+                <Calendar className="w-3.5 h-3.5 text-[#B08D57]" />
                 <span>Book Viewing</span>
               </button>
               <button
@@ -255,7 +255,7 @@ export const LeadDetailPage: React.FC = () => {
                   setNotifyTitle(`Update from Elena Rostova: ${lead.property?.title || 'Private Residence'}`);
                   setIsNotifyModalOpen(true);
                 }}
-                className="py-2.5 bg-[#262629] hover:bg-[#3E3E42] text-[#C5A880] border border-[#C5A880]/50 flex items-center justify-center gap-1.5 uppercase font-semibold text-[11px]"
+                className="py-2.5 bg-[#FFFDF8] hover:bg-[#F7F3EA] text-[#B08D57] border border-[#B08D57]/50 flex items-center justify-center gap-1.5 uppercase font-semibold text-[11px] transition-colors"
               >
                 <Bell className="w-3.5 h-3.5" />
                 <span>Notify Client</span>
@@ -264,18 +264,18 @@ export const LeadDetailPage: React.FC = () => {
           </div>
 
           {/* Client Message */}
-          <div className="bg-[#18181A] border border-[#2A2A2D] p-6 text-xs space-y-2">
-            <span className="text-[10px] uppercase tracking-wider text-[#A3A3A8] font-mono font-medium block">
+          <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 text-xs space-y-2 shadow-sm">
+            <span className="text-[10px] uppercase tracking-wider text-[#6B7280] font-mono font-medium block">
               Inquiry / Client Statement
             </span>
-            <p className="text-sm text-[#F7F5F0] leading-relaxed italic bg-[#121214] p-4 border border-[#2A2A2D]">
+            <p className="text-sm text-[#3E4852] leading-relaxed italic bg-[#F7F3EA] p-4 border border-[#E9E1D4]">
               "{lead.message || 'No additional message text provided.'}"
             </p>
           </div>
 
           {/* Activity Notes Section */}
-          <div className="bg-[#18181A] border border-[#2A2A2D] p-6 text-xs space-y-4">
-            <h3 className="font-serif text-xl font-light text-[#F7F5F0]">Confidential Broker Notes</h3>
+          <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 text-xs space-y-4 shadow-sm">
+            <h3 className="font-display text-xl font-normal text-[#102A43]">Confidential Broker Notes</h3>
 
             <form onSubmit={handleAddNote} className="space-y-3">
               <textarea
@@ -284,28 +284,28 @@ export const LeadDetailPage: React.FC = () => {
                 placeholder="Record client requirements, budget verification, call outcome, or viewing preferences..."
                 value={newNote}
                 onChange={(e) => setNewNote(e.target.value)}
-                className="w-full bg-[#121214] border border-[#2A2A2D] p-3 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+                className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-3 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
               />
               <div className="flex justify-end">
                 <button
                   type="submit"
                   disabled={isAddingNote}
-                  className="bg-[#C5A880] hover:bg-[#B8976C] text-[#18181A] px-4 py-2 uppercase font-semibold text-[10px] tracking-wider transition-all flex items-center gap-1.5"
+                  className="bg-[#102A43] hover:bg-[#1E3A5F] text-[#FFFDF8] px-4 py-2 uppercase font-semibold text-[10px] tracking-wider transition-all flex items-center gap-1.5 shadow-sm"
                 >
-                  <Send className="w-3 h-3" />
+                  <Send className="w-3 h-3 text-[#B08D57]" />
                   <span>{isAddingNote ? 'Saving Note...' : 'Save Activity Note'}</span>
                 </button>
               </div>
             </form>
 
-            <div className="space-y-3 pt-4 border-t border-[#2A2A2D]">
+            <div className="space-y-3 pt-4 border-t border-[#E9E1D4]">
               {lead.notes?.map((n: any, idx: number) => (
-                <div key={idx} className="p-3 bg-[#121214] border border-[#2A2A2D]/60 space-y-1">
-                  <div className="flex justify-between items-center text-[10px] text-[#71717A] font-mono">
-                    <span className="text-[#C5A880]">{n.author}</span>
+                <div key={idx} className="p-3 bg-[#F7F3EA] border border-[#E9E1D4] space-y-1">
+                  <div className="flex justify-between items-center text-[10px] text-[#6B7280] font-mono">
+                    <span className="text-[#B08D57] font-semibold">{n.author}</span>
                     <span>{new Date(n.createdAt).toLocaleDateString()}</span>
                   </div>
-                  <p className="text-xs text-[#A3A3A8] leading-relaxed">{n.text}</p>
+                  <p className="text-xs text-[#3E4852] leading-relaxed">{n.text}</p>
                 </div>
               ))}
             </div>
@@ -316,23 +316,23 @@ export const LeadDetailPage: React.FC = () => {
         <div className="lg:col-span-5 space-y-6">
           {/* Interested Residence */}
           {lead.property && (
-            <div className="bg-[#18181A] border border-[#2A2A2D] p-6 text-xs space-y-3">
-              <span className="text-[10px] uppercase tracking-wider text-[#A3A3A8] font-mono">
+            <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 text-xs space-y-3 shadow-sm">
+              <span className="text-[10px] uppercase tracking-wider text-[#6B7280] font-mono">
                 Mandate Residence
               </span>
-              <div className="aspect-[16/9] bg-[#121214] overflow-hidden border border-[#2A2A2D]">
+              <div className="aspect-[16/9] bg-[#F7F3EA] overflow-hidden border border-[#E9E1D4]">
                 <img
                   src={lead.property.featuredImage}
                   alt=""
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h4 className="font-serif text-lg font-medium text-[#F7F5F0] leading-snug">
+              <h4 className="font-display text-lg font-medium text-[#102A43] leading-snug">
                 {lead.property.title}
               </h4>
-              <div className="flex justify-between items-center pt-2 border-t border-[#2A2A2D]">
-                <span className="text-[#A3A3A8]">{lead.property.community}</span>
-                <span className="font-serif text-base text-[#C5A880]">
+              <div className="flex justify-between items-center pt-2 border-t border-[#E9E1D4]">
+                <span className="text-[#6B7280]">{lead.property.community}</span>
+                <span className="font-display text-base text-[#B08D57] font-semibold">
                   {formatAED(lead.property.priceAED)}
                 </span>
               </div>
@@ -341,20 +341,20 @@ export const LeadDetailPage: React.FC = () => {
 
           {/* Lead Qualification Score */}
           {score && (
-            <div className="bg-[#18181A] border border-[#2A2A2D] p-6 text-xs space-y-3">
+            <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 text-xs space-y-3 shadow-sm">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] uppercase tracking-wider text-[#A3A3A8]">Lead Tier</span>
-                <span className="text-[10px] font-mono font-bold bg-[#C5A880]/20 text-[#C5A880] px-2 py-0.5">
+                <span className="text-[10px] uppercase tracking-wider text-[#6B7280] font-mono">Lead Tier</span>
+                <span className="text-[10px] font-mono font-bold bg-[#F7F3EA] border border-[#B08D57] text-[#B08D57] px-2 py-0.5">
                   {score.tier}
                 </span>
               </div>
-              <div className="font-serif text-3xl text-[#F7F5F0]">
-                {score.score} <span className="text-xs text-[#71717A] font-sans">/ 100</span>
+              <div className="font-display text-3xl text-[#102A43]">
+                {score.score} <span className="text-xs text-[#6B7280] font-ui">/ 100</span>
               </div>
-              <div className="space-y-1.5 pt-2 border-t border-[#2A2A2D]">
+              <div className="space-y-1.5 pt-2 border-t border-[#E9E1D4]">
                 {score.indicators?.map((ind: string, idx: number) => (
-                  <div key={idx} className="flex items-center gap-1.5 text-[11px] text-[#A3A3A8]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
+                  <div key={idx} className="flex items-center gap-1.5 text-[11px] text-[#3E4852]">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#5D7A65] shrink-0" />
                     <span>{ind}</span>
                   </div>
                 ))}
@@ -363,16 +363,16 @@ export const LeadDetailPage: React.FC = () => {
           )}
 
           {/* Chronological Activity Audit Trail */}
-          <div className="bg-[#18181A] border border-[#2A2A2D] p-6 text-xs space-y-4">
-            <h3 className="font-serif text-lg font-light text-[#F7F5F0]">Lifecycle Audit Trail</h3>
+          <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 text-xs space-y-4 shadow-sm">
+            <h3 className="font-display text-lg font-normal text-[#102A43]">Lifecycle Audit Trail</h3>
             <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
               {activities.map((act) => (
-                <div key={act._id} className="p-2.5 bg-[#121214] border border-[#2A2A2D]/50 space-y-1 text-[11px]">
-                  <div className="flex justify-between items-center text-[9px] text-[#71717A] font-mono">
-                    <span className="text-[#C5A880]">{act.type}</span>
+                <div key={act._id} className="p-2.5 bg-[#F7F3EA] border border-[#E9E1D4] space-y-1 text-[11px]">
+                  <div className="flex justify-between items-center text-[9px] text-[#6B7280] font-mono">
+                    <span className="text-[#B08D57] font-semibold">{act.type}</span>
                     <span>{new Date(act.createdAt).toLocaleString()}</span>
                   </div>
-                  <p className="text-[#A3A3A8]">{act.details}</p>
+                  <p className="text-[#3E4852]">{act.details}</p>
                 </div>
               ))}
             </div>
@@ -382,33 +382,33 @@ export const LeadDetailPage: React.FC = () => {
 
       {/* Schedule Viewing Modal */}
       {isViewingModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0B0C]/80 backdrop-blur-sm">
-          <div className="bg-[#18181A] border border-[#2A2A2D] max-w-md w-full p-6 text-[#F7F5F0] space-y-4 text-xs">
-            <div className="flex justify-between items-center pb-3 border-b border-[#2A2A2D]">
-              <h3 className="font-serif text-xl font-light">Schedule Private Viewing</h3>
-              <button onClick={() => setIsViewingModalOpen(false)} className="text-[#71717A] hover:text-[#F7F5F0]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B2135]/60 backdrop-blur-sm">
+          <div className="bg-[#FFFDF8] border border-[#E9E1D4] max-w-md w-full p-6 text-[#3E4852] space-y-4 text-xs shadow-2xl">
+            <div className="flex justify-between items-center pb-3 border-b border-[#E9E1D4]">
+              <h3 className="font-display text-xl font-normal text-[#102A43]">Schedule Private Viewing</h3>
+              <button onClick={() => setIsViewingModalOpen(false)} className="text-[#6B7280] hover:text-[#102A43]">
                 ✕
               </button>
             </div>
 
             <form onSubmit={handleScheduleViewing} className="space-y-4">
               <div>
-                <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">Viewing Date</label>
+                <label className="block text-[11px] uppercase text-[#6B7280] font-mono mb-1">Viewing Date</label>
                 <input
                   type="date"
                   required
                   value={viewingDate}
                   onChange={(e) => setViewingDate(e.target.value)}
-                  className="w-full bg-[#121214] border border-[#2A2A2D] p-2 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                  className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2 text-xs text-[#102A43] focus:border-[#B08D57] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">Time Slot (GST)</label>
+                <label className="block text-[11px] uppercase text-[#6B7280] font-mono mb-1">Time Slot (GST)</label>
                 <select
                   value={viewingSlot}
                   onChange={(e) => setViewingSlot(e.target.value)}
-                  className="w-full bg-[#121214] border border-[#2A2A2D] p-2 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                  className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2 text-xs text-[#102A43] focus:border-[#B08D57] focus:outline-none"
                 >
                   <option value="10:00 - 11:30 GST">10:00 - 11:30 GST (Morning Inspection)</option>
                   <option value="12:00 - 13:30 GST">12:00 - 13:30 GST (Noon Inspection)</option>
@@ -417,18 +417,18 @@ export const LeadDetailPage: React.FC = () => {
                 </select>
               </div>
 
-              <div className="pt-2 flex justify-end gap-2">
+              <div className="pt-2 flex justify-end gap-2 border-t border-[#E9E1D4]">
                 <button
                   type="button"
                   onClick={() => setIsViewingModalOpen(false)}
-                  className="px-4 py-2 border border-[#2A2A2D] text-xs uppercase text-[#A3A3A8]"
+                  className="px-4 py-2 border border-[#E9E1D4] text-xs uppercase text-[#6B7280] hover:text-[#102A43] bg-[#FFFDF8]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isScheduling}
-                  className="px-4 py-2 bg-[#C5A880] text-[#18181A] font-semibold text-xs uppercase"
+                  className="px-4 py-2 bg-[#102A43] hover:bg-[#1E3A5F] text-[#FFFDF8] font-semibold text-xs uppercase tracking-wider shadow-sm"
                 >
                   {isScheduling ? 'Confirming...' : 'Confirm Appointment'}
                 </button>
@@ -440,16 +440,16 @@ export const LeadDetailPage: React.FC = () => {
 
       {/* Notify Client Modal */}
       {isNotifyModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0B0C]/80 backdrop-blur-sm">
-          <div className="bg-[#18181A] border border-[#2A2A2D] max-w-md w-full p-6 text-[#F7F5F0] space-y-4 text-xs">
-            <div className="flex justify-between items-center pb-3 border-b border-[#2A2A2D]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B2135]/60 backdrop-blur-sm">
+          <div className="bg-[#FFFDF8] border border-[#E9E1D4] max-w-md w-full p-6 text-[#3E4852] space-y-4 text-xs shadow-2xl">
+            <div className="flex justify-between items-center pb-3 border-b border-[#E9E1D4]">
               <div className="flex items-center gap-2">
-                <Bell className="w-4 h-4 text-[#C5A880]" />
-                <h3 className="font-serif text-xl font-light">Send Client Notification</h3>
+                <Bell className="w-4 h-4 text-[#B08D57]" />
+                <h3 className="font-display text-xl font-normal text-[#102A43]">Send Client Notification</h3>
               </div>
               <button
                 onClick={() => setIsNotifyModalOpen(false)}
-                className="text-[#71717A] hover:text-[#F7F5F0]"
+                className="text-[#6B7280] hover:text-[#102A43]"
               >
                 ✕
               </button>
@@ -457,35 +457,35 @@ export const LeadDetailPage: React.FC = () => {
 
             {notifySuccess ? (
               <div className="py-6 text-center space-y-2">
-                <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto" />
-                <p className="font-serif text-lg text-white">Notification Transmitted</p>
-                <p className="text-xs text-[#A1A1AA]">
+                <CheckCircle2 className="w-10 h-10 text-[#5D7A65] mx-auto animate-bounce" />
+                <p className="font-display text-lg text-[#102A43]">Notification Transmitted</p>
+                <p className="text-xs text-[#6B7280]">
                   Client {lead.name} ({lead.email}) received this property alert in real-time.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSendClientNotification} className="space-y-4">
                 {notifyError && (
-                  <div className="p-3 bg-red-950/40 border border-red-800 text-red-200 text-xs font-mono flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                  <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-mono flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
                     <span>{notifyError}</span>
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
+                  <label className="block text-[11px] uppercase text-[#6B7280] font-mono mb-1">
                     Recipient Client
                   </label>
                   <input
                     type="text"
                     disabled
                     value={`${lead.name} (${lead.email})`}
-                    className="w-full bg-[#121214] border border-[#2A2A2D] p-2 text-xs text-[#A1A1AA] cursor-not-allowed font-mono"
+                    className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2 text-xs text-[#6B7280] cursor-not-allowed font-mono"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
+                  <label className="block text-[11px] uppercase text-[#6B7280] font-mono mb-1">
                     Alert Title / Subject *
                   </label>
                   <input
@@ -494,18 +494,18 @@ export const LeadDetailPage: React.FC = () => {
                     value={notifyTitle}
                     onChange={(e) => setNotifyTitle(e.target.value)}
                     placeholder="e.g. Viewing confirmation or off-market opportunity"
-                    className="w-full bg-[#121214] border border-[#2A2A2D] p-2 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                    className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2 text-xs text-[#102A43] focus:border-[#B08D57] focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
+                  <label className="block text-[11px] uppercase text-[#6B7280] font-mono mb-1">
                     Notification Category
                   </label>
                   <select
                     value={notifyType}
                     onChange={(e) => setNotifyType(e.target.value)}
-                    className="w-full bg-[#121214] border border-[#2A2A2D] p-2 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                    className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2 text-xs text-[#102A43] focus:border-[#B08D57] focus:outline-none"
                   >
                     <option value="STATUS_CHANGE">Pipeline Status Update</option>
                     <option value="VIEWING_SCHEDULED">Viewing Itinerary & Slot</option>
@@ -515,7 +515,7 @@ export const LeadDetailPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] uppercase text-[#A3A3A8] mb-1">
+                  <label className="block text-[11px] uppercase text-[#6B7280] font-mono mb-1">
                     Client Notification Message *
                   </label>
                   <textarea
@@ -524,22 +524,22 @@ export const LeadDetailPage: React.FC = () => {
                     value={notifyMessage}
                     onChange={(e) => setNotifyMessage(e.target.value)}
                     placeholder="Enter message text that will be displayed in the client's notification bell and profile..."
-                    className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                    className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:border-[#B08D57] focus:outline-none"
                   />
                 </div>
 
-                <div className="pt-2 flex justify-end gap-2">
+                <div className="pt-2 flex justify-end gap-2 border-t border-[#E9E1D4]">
                   <button
                     type="button"
                     onClick={() => setIsNotifyModalOpen(false)}
-                    className="px-4 py-2 border border-[#2A2A2D] text-xs uppercase text-[#A3A3A8]"
+                    className="px-4 py-2 border border-[#E9E1D4] text-xs uppercase text-[#6B7280] hover:text-[#102A43] bg-[#FFFDF8]"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSendingNotify}
-                    className="px-4 py-2 bg-[#C5A880] hover:bg-[#B8976C] text-[#18181A] font-semibold text-xs uppercase tracking-wider disabled:opacity-50"
+                    className="px-4 py-2 bg-[#102A43] hover:bg-[#1E3A5F] text-[#FFFDF8] font-semibold text-xs uppercase tracking-wider disabled:opacity-50 shadow-sm"
                   >
                     {isSendingNotify ? 'Transmitting...' : 'Send Live Alert'}
                   </button>

@@ -72,31 +72,31 @@ export const NewPropertyPage: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
-      <div className="flex items-center gap-4 pb-6 border-b border-[#2A2A2D]">
+      <div className="flex items-center gap-4 pb-6 border-b border-[#E9E1D4]">
         <button
           onClick={() => navigate('/broker/properties')}
-          className="p-2 border border-[#2A2A2D] text-[#A3A3A8] hover:text-[#F7F5F0] transition-colors"
+          className="p-2 border border-[#E9E1D4] text-[#6B7280] hover:text-[#102A43] bg-[#FFFDF8] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
         </button>
         <div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#C5A880] font-mono font-semibold">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-[#B08D57] font-mono font-semibold">
             Inventory Onboarding
           </span>
-          <h1 className="font-serif text-3xl font-light text-[#F7F5F0]">Create New Listing</h1>
+          <h1 className="font-display text-3xl font-light text-[#102A43]">Create New Listing</h1>
         </div>
       </div>
 
       {error && (
-        <div className="p-3 bg-red-950/60 border border-red-800 text-red-300 text-xs">
+        <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-mono">
           {error}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="bg-[#18181A] border border-[#2A2A2D] p-8 space-y-6 text-xs">
+      <form onSubmit={handleSubmit} className="bg-[#FFFDF8] border border-[#E9E1D4] p-8 space-y-6 text-xs shadow-sm">
         {/* Title */}
         <div>
-          <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+          <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
             Listing Title *
           </label>
           <input
@@ -105,20 +105,20 @@ export const NewPropertyPage: React.FC = () => {
             placeholder="e.g. The Palm Serenity Beachfront Mansion"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full bg-[#121214] border border-[#2A2A2D] p-3 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+            className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-3 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
           />
         </div>
 
         {/* Purpose, Type, Community, Developer */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+            <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
               Purpose
             </label>
             <select
               value={purpose}
               onChange={(e) => setPurpose(e.target.value)}
-              className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+              className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
             >
               <option value="BUY">For Sale</option>
               <option value="RENT">For Lease</option>
@@ -127,13 +127,13 @@ export const NewPropertyPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+            <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
               Property Type
             </label>
             <select
               value={propertyType}
               onChange={(e) => setPropertyType(e.target.value)}
-              className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+              className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
             >
               {PROPERTY_TYPES.map((t) => (
                 <option key={t} value={t}>{t}</option>
@@ -142,13 +142,13 @@ export const NewPropertyPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+            <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
               Community
             </label>
             <select
               value={community}
               onChange={(e) => setCommunity(e.target.value)}
-              className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+              className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
             >
               {DUBAI_COMMUNITIES.map((c) => (
                 <option key={c.slug} value={c.name}>{c.name}</option>
@@ -157,13 +157,13 @@ export const NewPropertyPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+            <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
               Developer
             </label>
             <select
               value={developer}
               onChange={(e) => setDeveloper(e.target.value)}
-              className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+              className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
             >
               {DUBAI_DEVELOPERS.map((d) => (
                 <option key={d.slug} value={d.name}>{d.name}</option>
@@ -175,7 +175,7 @@ export const NewPropertyPage: React.FC = () => {
         {/* Pricing & Dimensions */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+            <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
               Price in AED *
             </label>
             <input
@@ -184,12 +184,12 @@ export const NewPropertyPage: React.FC = () => {
               placeholder="e.g. 45000000"
               value={priceAED}
               onChange={(e) => setPriceAED(e.target.value)}
-              className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+              className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+            <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
               Bedrooms
             </label>
             <input
@@ -197,12 +197,12 @@ export const NewPropertyPage: React.FC = () => {
               required
               value={bedrooms}
               onChange={(e) => setBedrooms(e.target.value)}
-              className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+              className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+            <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
               Bathrooms
             </label>
             <input
@@ -210,12 +210,12 @@ export const NewPropertyPage: React.FC = () => {
               required
               value={bathrooms}
               onChange={(e) => setBathrooms(e.target.value)}
-              className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+              className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+            <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
               Built-Up Area (sq.ft) *
             </label>
             <input
@@ -224,14 +224,14 @@ export const NewPropertyPage: React.FC = () => {
               placeholder="e.g. 12500"
               value={builtUpAreaSqFt}
               onChange={(e) => setBuiltUpAreaSqFt(e.target.value)}
-              className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+              className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
             />
           </div>
         </div>
 
         {/* Image URL */}
         <div>
-          <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+          <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
             Featured Photography URL *
           </label>
           <input
@@ -239,13 +239,13 @@ export const NewPropertyPage: React.FC = () => {
             required
             value={featuredImage}
             onChange={(e) => setFeaturedImage(e.target.value)}
-            className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+            className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
           />
         </div>
 
         {/* Description */}
         <div>
-          <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-1.5 font-medium">
+          <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-1.5 font-medium">
             Architectural Narrative & Description *
           </label>
           <textarea
@@ -254,27 +254,27 @@ export const NewPropertyPage: React.FC = () => {
             placeholder="Describe luxury features, panoramic vistas, imported finishes, and exclusivity..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full bg-[#121214] border border-[#2A2A2D] p-3 text-xs text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
+            className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-3 text-xs text-[#102A43] focus:outline-none focus:border-[#B08D57]"
           />
         </div>
 
         {/* Amenities Selection */}
         <div>
-          <label className="block text-[11px] uppercase tracking-wider text-[#A3A3A8] mb-2 font-medium">
+          <label className="block text-[11px] uppercase tracking-wider text-[#6B7280] font-mono mb-2 font-medium">
             Select Verified Amenities
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border border-[#2A2A2D] bg-[#121214]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border border-[#E9E1D4] bg-[#F7F3EA]">
             {LUXURY_AMENITIES.map((a) => {
               const checked = amenities.includes(a);
               return (
-                <label key={a} className="flex items-center gap-2 text-[11px] text-[#A3A3A8] cursor-pointer hover:text-[#F7F5F0]">
+                <label key={a} className="flex items-center gap-2 text-[11px] text-[#3E4852] cursor-pointer hover:text-[#102A43]">
                   <input
                     type="checkbox"
                     checked={checked}
                     onChange={() => {
                       setAmenities(checked ? amenities.filter((item) => item !== a) : [...amenities, a]);
                     }}
-                    className="rounded border-[#2A2A2D] text-[#C5A880] focus:ring-0"
+                    className="rounded border-[#E9E1D4] text-[#102A43] focus:ring-0"
                   />
                   <span>{a}</span>
                 </label>
@@ -284,11 +284,11 @@ export const NewPropertyPage: React.FC = () => {
         </div>
 
         {/* Submit Action */}
-        <div className="pt-4 border-t border-[#2A2A2D]">
+        <div className="pt-4 border-t border-[#E9E1D4]">
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-[#C5A880] hover:bg-[#B8976C] text-[#18181A] py-3.5 text-xs uppercase tracking-[0.18em] font-semibold transition-all disabled:opacity-50"
+            className="w-full bg-[#102A43] hover:bg-[#1E3A5F] text-[#FFFDF8] py-3.5 text-xs uppercase tracking-[0.18em] font-semibold transition-all disabled:opacity-50 shadow-sm"
           >
             {isSubmitting ? 'Registering Property...' : 'Submit Listing For Moderation'}
           </button>

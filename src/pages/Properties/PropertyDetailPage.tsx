@@ -55,65 +55,65 @@ export const PropertyDetailPage: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
-      <div className="flex items-center gap-4 pb-6 border-b border-[#2A2A2D]">
+      <div className="flex items-center gap-4 pb-6 border-b border-[#E9E1D4]">
         <button
           onClick={() => navigate('/broker/properties')}
-          className="p-2 border border-[#2A2A2D] text-[#A3A3A8] hover:text-[#F7F5F0]"
+          className="p-2 border border-[#E9E1D4] text-[#6B7280] hover:text-[#102A43] bg-[#FFFDF8] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
         </button>
         <div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#C5A880] font-mono font-semibold">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-[#B08D57] font-mono font-semibold">
             {property.referenceNumber}
           </span>
-          <h1 className="font-serif text-3xl font-light text-[#F7F5F0]">{property.title}</h1>
+          <h1 className="font-display text-3xl font-light text-[#102A43]">{property.title}</h1>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-2 space-y-6">
-          <div className="aspect-[16/9] bg-[#18181A] overflow-hidden border border-[#2A2A2D]">
+          <div className="aspect-[16/9] bg-[#F7F3EA] overflow-hidden border border-[#E9E1D4]">
             <img src={property.featuredImage} alt="" className="w-full h-full object-cover" />
           </div>
 
-          <div className="bg-[#18181A] border border-[#2A2A2D] p-6 space-y-4 text-xs">
-            <h3 className="font-serif text-xl font-light text-[#F7F5F0]">Residence Information</h3>
-            <p className="text-[#A3A3A8] leading-relaxed">{property.description}</p>
+          <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 space-y-4 text-xs shadow-sm">
+            <h3 className="font-display text-xl font-normal text-[#102A43]">Residence Information</h3>
+            <p className="text-[#3E4852] leading-relaxed">{property.description}</p>
 
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#2A2A2D] text-[#A3A3A8]">
-              <div>Community: <span className="text-[#F7F5F0] font-medium">{property.community}</span></div>
-              <div>Bedrooms: <span className="text-[#F7F5F0] font-medium">{property.bedrooms} Beds</span></div>
-              <div>Bathrooms: <span className="text-[#F7F5F0] font-medium">{property.bathrooms} Baths</span></div>
-              <div>Area: <span className="text-[#F7F5F0] font-medium">{formatSqFt(property.builtUpAreaSqFt)}</span></div>
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#E9E1D4] text-[#6B7280]">
+              <div>Community: <span className="text-[#102A43] font-medium">{property.community}</span></div>
+              <div>Bedrooms: <span className="text-[#102A43] font-medium">{property.bedrooms} Beds</span></div>
+              <div>Bathrooms: <span className="text-[#102A43] font-medium">{property.bathrooms} Baths</span></div>
+              <div>Area: <span className="text-[#102A43] font-medium">{formatSqFt(property.builtUpAreaSqFt)}</span></div>
             </div>
           </div>
         </div>
 
         {/* Status & Modification */}
         <div className="space-y-6">
-          <div className="bg-[#18181A] border border-[#2A2A2D] p-6 space-y-4 text-xs">
-            <h3 className="font-serif text-xl font-light text-[#F7F5F0]">Listing Controls</h3>
+          <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 space-y-4 text-xs shadow-sm">
+            <h3 className="font-display text-xl font-normal text-[#102A43]">Listing Controls</h3>
 
             <div>
-              <label className="block text-[10px] uppercase tracking-wider text-[#A3A3A8] mb-1 font-medium">
+              <label className="block text-[10px] uppercase tracking-wider text-[#6B7280] mb-1 font-mono">
                 Asking Price (AED)
               </label>
               <input
                 type="number"
                 value={priceAED}
                 onChange={(e) => setPriceAED(e.target.value)}
-                className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:border-[#B08D57] focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] uppercase tracking-wider text-[#A3A3A8] mb-1 font-medium">
+              <label className="block text-[10px] uppercase tracking-wider text-[#6B7280] mb-1 font-mono">
                 Listing Status
               </label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="w-full bg-[#121214] border border-[#2A2A2D] p-2.5 text-xs text-[#F7F5F0] focus:border-[#C5A880]"
+                className="w-full bg-[#F7F3EA] border border-[#E9E1D4] p-2.5 text-xs text-[#102A43] focus:border-[#B08D57] focus:outline-none"
               >
                 <option value="ACTIVE">ACTIVE (Published)</option>
                 <option value="PENDING_APPROVAL">PENDING_APPROVAL</option>
@@ -127,7 +127,7 @@ export const PropertyDetailPage: React.FC = () => {
             <button
               onClick={handleSave}
               disabled={isSaving}
-              className="w-full bg-[#C5A880] hover:bg-[#B8976C] text-[#18181A] py-2.5 text-xs uppercase tracking-wider font-semibold transition-all"
+              className="w-full bg-[#102A43] hover:bg-[#1E3A5F] text-[#FFFDF8] py-2.5 text-xs uppercase tracking-wider font-semibold transition-all shadow-sm"
             >
               {isSaving ? 'Updating...' : 'Save Changes'}
             </button>

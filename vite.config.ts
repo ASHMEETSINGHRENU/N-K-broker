@@ -14,6 +14,7 @@ export default defineConfig({
     }
   },
   resolve: {
+    preserveSymlinks: true,
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@nestandkey/constants': path.resolve(__dirname, './src/shared/constants'),

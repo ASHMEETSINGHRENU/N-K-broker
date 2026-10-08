@@ -19,7 +19,7 @@ import { ProfilePage } from './pages/Profile/ProfilePage';
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useBrokerAuth();
   if (isLoading) {
-    return <div className="min-h-screen bg-[#121214] flex items-center justify-center text-xs text-[#71717A]">Verifying Broker Access...</div>;
+    return <div className="min-h-screen bg-[#F7F3EA] flex items-center justify-center text-xs text-[#6B7280] font-ui">Verifying Broker Access...</div>;
   }
   return isAuthenticated ? <>{children}</> : <Navigate to="/broker/login" replace />;
 };

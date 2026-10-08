@@ -7,11 +7,8 @@ import {
   Users2,
   Calendar,
   DollarSign,
-  TrendingUp,
   Clock,
   ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
   Plus
 } from 'lucide-react';
 
@@ -35,11 +32,11 @@ export const DashboardPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="space-y-6 animate-pulse">
-        <div className="h-8 bg-[#18181A] w-1/4" />
+      <div className="space-y-6 animate-pulse font-ui">
+        <div className="h-8 bg-[#FFFDF8] border border-[#E9E1D4] w-1/4" />
         <div className="grid grid-cols-4 gap-6">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-28 bg-[#18181A] border border-[#2A2A2D]" />
+            <div key={i} className="h-28 bg-[#FFFDF8] border border-[#E9E1D4]" />
           ))}
         </div>
       </div>
@@ -49,14 +46,14 @@ export const DashboardPage: React.FC = () => {
   const m = data?.metrics || {};
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 font-ui text-[#3E4852]">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#2A2A2D]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E9E1D4]">
         <div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#C5A880] font-mono font-semibold">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-[#B08D57] font-semibold">
             Broker Operations Overview
           </span>
-          <h1 className="font-serif text-3xl font-light tracking-tight text-[#F7F5F0]">
+          <h1 className="font-display text-3xl font-normal tracking-tight text-[#102A43]">
             Executive Workspace
           </h1>
         </div>
@@ -64,42 +61,42 @@ export const DashboardPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <Link
             to="/broker/properties/new"
-            className="bg-[#C5A880] hover:bg-[#B8976C] text-[#18181A] px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5"
+            className="bg-[#102A43] hover:bg-[#0B2135] text-[#FFFDF8] hover:text-[#D8C3A5] px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-sm"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 text-[#B08D57]" />
             <span>Create Listing</span>
           </Link>
           <Link
             to="/broker/leads"
-            className="border border-[#2A2A2D] hover:border-[#C5A880] bg-[#18181A] text-[#F7F5F0] px-4 py-2 text-xs uppercase tracking-wider font-medium transition-colors"
+            className="border border-[#E9E1D4] hover:border-[#B08D57] bg-[#FFFDF8] text-[#102A43] px-4 py-2 text-xs uppercase tracking-wider font-medium transition-colors shadow-xs"
           >
             Manage Leads
           </Link>
         </div>
       </div>
 
-      {/* KPI Counters Grid */}
+      {/* KPI Counters Grid - Warm White Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Active Listings */}
-        <div className="bg-[#18181A] border border-[#2A2A2D] p-6">
+        <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] uppercase tracking-wider text-[#A3A3A8]">Active Inventory</span>
-            <Building2 className="w-4 h-4 text-[#C5A880]" />
+            <span className="text-[11px] uppercase tracking-wider text-[#6B7280]">Active Inventory</span>
+            <Building2 className="w-4 h-4 text-[#B08D57]" />
           </div>
-          <div className="font-serif text-3xl text-[#F7F5F0] font-medium">{m.activeListings || 0}</div>
-          <span className="text-[10px] text-[#71717A] mt-1 block">
+          <div className="font-display text-3xl text-[#102A43] font-normal">{m.activeListings || 0}</div>
+          <span className="text-[10px] text-[#6B7280] mt-1 block">
             {m.pendingListings || 0} pending moderation
           </span>
         </div>
 
         {/* Total Inquiries / Leads */}
-        <div className="bg-[#18181A] border border-[#2A2A2D] p-6">
+        <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] uppercase tracking-wider text-[#A3A3A8]">Assigned Leads</span>
-            <Users2 className="w-4 h-4 text-[#C5A880]" />
+            <span className="text-[11px] uppercase tracking-wider text-[#6B7280]">Assigned Leads</span>
+            <Users2 className="w-4 h-4 text-[#B08D57]" />
           </div>
-          <div className="font-serif text-3xl text-[#F7F5F0] font-medium">{m.totalLeads || 0}</div>
-          <div className="flex items-center gap-2 text-[10px] text-[#C5A880] mt-1 font-mono">
+          <div className="font-display text-3xl text-[#102A43] font-normal">{m.totalLeads || 0}</div>
+          <div className="flex items-center gap-2 text-[10px] text-[#B08D57] mt-1 font-mono">
             <span>{m.newLeads || 0} NEW Inquiries</span>
             <span>•</span>
             <span>{m.activeLeads || 0} Active</span>
@@ -107,27 +104,27 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Viewings Scheduled */}
-        <div className="bg-[#18181A] border border-[#2A2A2D] p-6">
+        <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] uppercase tracking-wider text-[#A3A3A8]">Upcoming Viewings</span>
-            <Calendar className="w-4 h-4 text-[#C5A880]" />
+            <span className="text-[11px] uppercase tracking-wider text-[#6B7280]">Upcoming Viewings</span>
+            <Calendar className="w-4 h-4 text-[#B08D57]" />
           </div>
-          <div className="font-serif text-3xl text-[#F7F5F0] font-medium">
+          <div className="font-display text-3xl text-[#102A43] font-normal">
             {data?.upcomingViewings?.length || 0}
           </div>
-          <span className="text-[10px] text-[#71717A] mt-1 block">Scheduled on-site VIP tours</span>
+          <span className="text-[10px] text-[#6B7280] mt-1 block">Scheduled on-site VIP tours</span>
         </div>
 
         {/* Commissions Earned */}
-        <div className="bg-[#18181A] border border-[#2A2A2D] p-6">
+        <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] uppercase tracking-wider text-[#A3A3A8]">Earned Commission</span>
-            <DollarSign className="w-4 h-4 text-[#C5A880]" />
+            <span className="text-[11px] uppercase tracking-wider text-[#6B7280]">Earned Commission</span>
+            <DollarSign className="w-4 h-4 text-[#B08D57]" />
           </div>
-          <div className="font-serif text-2xl text-[#C5A880] font-medium truncate">
+          <div className="font-display text-2xl text-[#102A43] font-normal truncate">
             {formatAED(m.totalNetBrokerCommissionAED || 0)}
           </div>
-          <span className="text-[10px] text-[#71717A] mt-1 block">
+          <span className="text-[10px] text-[#6B7280] mt-1 block">
             Pending clearance: {formatAED(m.pendingCommissionAED || 0)}
           </span>
         </div>
@@ -136,12 +133,12 @@ export const DashboardPage: React.FC = () => {
       {/* Main Grid: Pipeline Stage & Viewings */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left (7 cols): Lead Stage Distribution */}
-        <div className="lg:col-span-7 bg-[#18181A] border border-[#2A2A2D] p-6">
-          <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#2A2A2D]">
-            <h3 className="font-serif text-xl font-light text-[#F7F5F0]">Lead Pipeline Progression</h3>
+        <div className="lg:col-span-7 bg-[#FFFDF8] border border-[#E9E1D4] p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#E9E1D4]">
+            <h3 className="font-display text-xl text-[#102A43] font-normal">Lead Pipeline Progression</h3>
             <Link
               to="/broker/leads"
-              className="text-[11px] uppercase tracking-wider text-[#C5A880] hover:underline flex items-center gap-1"
+              className="text-[11px] uppercase tracking-wider text-[#B08D57] hover:underline flex items-center gap-1 font-semibold"
             >
               <span>Inspect Pipeline</span>
               <ArrowRight className="w-3 h-3" />
@@ -155,12 +152,12 @@ export const DashboardPage: React.FC = () => {
               return (
                 <div key={st} className="space-y-1">
                   <div className="flex justify-between text-xs">
-                    <span className="text-[#A3A3A8] uppercase tracking-wider font-mono">{st}</span>
-                    <span className="font-semibold text-[#F7F5F0]">{count} leads</span>
+                    <span className="text-[#6B7280] uppercase tracking-wider font-mono">{st}</span>
+                    <span className="font-semibold text-[#102A43]">{count} leads</span>
                   </div>
-                  <div className="w-full bg-[#121214] h-2 border border-[#2A2A2D]">
+                  <div className="w-full bg-[#F7F3EA] h-2 border border-[#E9E1D4]">
                     <div
-                      className="bg-[#C5A880] h-full transition-all duration-500"
+                      className="bg-[#102A43] h-full transition-all duration-500"
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -171,37 +168,37 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Right (5 cols): Upcoming Viewings Schedule */}
-        <div className="lg:col-span-5 bg-[#18181A] border border-[#2A2A2D] p-6">
-          <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#2A2A2D]">
-            <h3 className="font-serif text-xl font-light text-[#F7F5F0]">Scheduled Private Viewings</h3>
+        <div className="lg:col-span-5 bg-[#FFFDF8] border border-[#E9E1D4] p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#E9E1D4]">
+            <h3 className="font-display text-xl text-[#102A43] font-normal">Scheduled Private Viewings</h3>
             <Link
               to="/broker/viewings"
-              className="text-[11px] uppercase tracking-wider text-[#C5A880] hover:underline"
+              className="text-[11px] uppercase tracking-wider text-[#B08D57] hover:underline font-semibold"
             >
               All Viewings
             </Link>
           </div>
 
           {data?.upcomingViewings?.length === 0 ? (
-            <div className="text-center py-12 text-xs text-[#71717A]">
+            <div className="text-center py-12 text-xs text-[#6B7280]">
               No upcoming viewings scheduled for today.
             </div>
           ) : (
             <div className="space-y-4 text-xs">
               {data?.upcomingViewings?.map((v: any) => (
-                <div key={v._id} className="p-3 bg-[#121214] border border-[#2A2A2D] space-y-1.5">
+                <div key={v._id} className="p-3 bg-[#F7F3EA] border border-[#E9E1D4] space-y-1.5 rounded-xs">
                   <div className="flex justify-between items-center">
-                    <span className="text-[10px] uppercase font-mono text-[#C5A880]">
+                    <span className="text-[10px] uppercase font-mono text-[#B08D57] font-semibold">
                       {v.viewingTimeSlot}
                     </span>
-                    <span className="bg-[#262629] text-[10px] text-[#A3A3A8] px-2 py-0.5 uppercase tracking-wider">
+                    <span className="bg-[#FFFDF8] border border-[#E9E1D4] text-[10px] text-[#102A43] px-2 py-0.5 uppercase tracking-wider font-medium">
                       {v.status}
                     </span>
                   </div>
-                  <span className="font-serif text-base font-medium text-[#F7F5F0] block truncate">
+                  <span className="font-display text-base font-normal text-[#102A43] block truncate">
                     {v.property?.title}
                   </span>
-                  <span className="text-[11px] text-[#71717A] block">
+                  <span className="text-[11px] text-[#6B7280] block">
                     {v.property?.community} • {formatAED(v.property?.priceAED)}
                   </span>
                 </div>
@@ -212,19 +209,19 @@ export const DashboardPage: React.FC = () => {
       </div>
 
       {/* Recent Activity Audit Trail */}
-      <div className="bg-[#18181A] border border-[#2A2A2D] p-6">
-        <div className="mb-4 pb-3 border-b border-[#2A2A2D]">
-          <h3 className="font-serif text-xl font-light text-[#F7F5F0]">Recent Operational Activity</h3>
+      <div className="bg-[#FFFDF8] border border-[#E9E1D4] p-6 shadow-sm">
+        <div className="mb-4 pb-3 border-b border-[#E9E1D4]">
+          <h3 className="font-display text-xl text-[#102A43] font-normal">Recent Operational Activity</h3>
         </div>
 
         <div className="space-y-3 text-xs">
           {data?.recentActivities?.map((act: any) => (
-            <div key={act._id} className="flex items-center justify-between p-2.5 bg-[#121214] border border-[#2A2A2D]/60">
+            <div key={act._id} className="flex items-center justify-between p-2.5 bg-[#F7F3EA] border border-[#E9E1D4] rounded-xs">
               <div className="flex items-center gap-3">
-                <Clock className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
-                <span className="text-[#A3A3A8]">{act.details}</span>
+                <Clock className="w-3.5 h-3.5 text-[#B08D57] shrink-0" />
+                <span className="text-[#3E4852]">{act.details}</span>
               </div>
-              <span className="text-[10px] text-[#71717A] font-mono shrink-0">
+              <span className="text-[10px] text-[#6B7280] font-mono shrink-0">
                 {new Date(act.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </span>
             </div>
@@ -234,3 +231,4 @@ export const DashboardPage: React.FC = () => {
     </div>
   );
 };
+export default DashboardPage;

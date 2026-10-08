@@ -56,21 +56,21 @@ export const BrokerLayout: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#121214] text-[#F7F5F0] flex font-sans">
-      {/* Sidebar */}
-      <aside className="w-64 bg-[#18181A] border-r border-[#2A2A2D] flex flex-col justify-between shrink-0">
+    <div className="min-h-screen bg-[#F7F3EA] text-[#3E4852] flex font-ui">
+      {/* Sidebar - Deep Navy #102A43 */}
+      <aside className="w-64 bg-[#102A43] border-r border-[#1E3A5F] flex flex-col justify-between shrink-0 text-[#F7F3EA]">
         <div>
           {/* Brand Header */}
-          <div className="p-6 border-b border-[#2A2A2D]">
+          <div className="p-6 border-b border-[#1E3A5F]">
             <Link to="/broker/dashboard" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full border border-[#C5A880] flex items-center justify-center text-[#C5A880]">
-                <span className="font-serif font-bold text-xs">NK</span>
+              <div className="w-8 h-8 rounded-full border border-[#B08D57] flex items-center justify-center text-[#D8C3A5] bg-[#0B2135]">
+                <span className="font-display font-bold text-xs">CS</span>
               </div>
               <div>
-                <span className="font-serif text-lg tracking-[0.16em] uppercase text-[#F7F5F0] block leading-none">
-                  NESTANDKEY
+                <span className="font-display text-lg tracking-[0.16em] uppercase text-[#F7F3EA] block leading-none">
+                  CRESTSHORE
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.25em] text-[#C5A880] font-medium block mt-0.5">
+                <span className="text-[9px] uppercase tracking-[0.25em] text-[#D8C3A5] font-medium block mt-0.5">
                   BROKER WORKSPACE
                 </span>
               </div>
@@ -88,16 +88,16 @@ export const BrokerLayout: React.FC = () => {
                   to={item.path}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-none text-xs uppercase tracking-wider transition-all ${
                     isActive
-                      ? 'bg-[#262629] text-[#C5A880] border-l-2 border-[#C5A880] font-semibold'
-                      : 'text-[#A3A3A8] hover:text-[#F7F5F0] hover:bg-[#262629]/50'
+                      ? 'bg-[#1E3A5F] text-[#D8C3A5] border-l-2 border-[#B08D57] font-semibold'
+                      : 'text-[#E9E1D4]/80 hover:text-[#F7F3EA] hover:bg-[#1E3A5F]/50'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <Icon className="w-4 h-4 text-[#C5A880]" />
+                    <Icon className="w-4 h-4 text-[#B08D57]" />
                     <span>{item.label}</span>
                   </div>
                   {item.badgeCount && item.badgeCount > 0 ? (
-                    <span className="bg-[#C5A880] text-[#18181A] text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-full">
+                    <span className="bg-[#B08D57] text-[#102A43] text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-full">
                       {item.badgeCount}
                     </span>
                   ) : null}
@@ -108,14 +108,14 @@ export const BrokerLayout: React.FC = () => {
         </div>
 
         {/* Footer Area */}
-        <div className="p-4 border-t border-[#2A2A2D] space-y-3">
+        <div className="p-4 border-t border-[#1E3A5F] space-y-3">
           {/* External links */}
           <div className="flex gap-2">
             <a
               href="http://localhost:5173"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 text-center text-[10px] uppercase tracking-wider py-1.5 border border-[#2A2A2D] text-[#A3A3A8] hover:text-[#C5A880] hover:border-[#C5A880] transition-colors"
+              className="flex-1 text-center text-[10px] uppercase tracking-wider py-1.5 border border-[#1E3A5F] text-[#E9E1D4]/80 hover:text-[#D8C3A5] hover:border-[#B08D57] transition-colors"
             >
               Public Site
             </a>
@@ -123,23 +123,23 @@ export const BrokerLayout: React.FC = () => {
               href="http://localhost:5175"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 text-center text-[10px] uppercase tracking-wider py-1.5 border border-[#2A2A2D] text-[#A3A3A8] hover:text-[#C5A880] hover:border-[#C5A880] transition-colors"
+              className="flex-1 text-center text-[10px] uppercase tracking-wider py-1.5 border border-[#1E3A5F] text-[#E9E1D4]/80 hover:text-[#D8C3A5] hover:border-[#B08D57] transition-colors"
             >
               Admin Panel
             </a>
           </div>
 
           {/* User Info & Logout */}
-          <div className="pt-2 border-t border-[#2A2A2D] flex items-center justify-between">
+          <div className="pt-2 border-t border-[#1E3A5F] flex items-center justify-between">
             <div className="flex items-center gap-2 overflow-hidden">
-              <div className="w-8 h-8 rounded-full bg-[#262629] border border-[#C5A880] flex items-center justify-center text-[#C5A880] text-xs font-serif shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#1E3A5F] border border-[#B08D57] flex items-center justify-center text-[#D8C3A5] text-xs font-display shrink-0">
                 {user?.name?.slice(0, 2).toUpperCase() || 'BR'}
               </div>
               <div className="truncate">
-                <span className="text-xs font-medium text-[#F7F5F0] block truncate">
+                <span className="text-xs font-medium text-[#F7F3EA] block truncate">
                   {user?.name || 'Broker Specialist'}
                 </span>
-                <span className="text-[10px] text-[#C5A880] block font-mono">
+                <span className="text-[10px] text-[#D8C3A5] block font-mono">
                   RERA Authorized
                 </span>
               </div>
@@ -147,7 +147,7 @@ export const BrokerLayout: React.FC = () => {
 
             <button
               onClick={handleLogout}
-              className="p-1.5 text-[#A3A3A8] hover:text-red-400 transition-colors"
+              className="p-1.5 text-[#E9E1D4]/70 hover:text-red-400 transition-colors"
               title="Sign Out"
             >
               <LogOut className="w-4 h-4" />
@@ -158,14 +158,14 @@ export const BrokerLayout: React.FC = () => {
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Executive Top Bar */}
-        <header className="h-16 bg-[#18181A] border-b border-[#2A2A2D] px-8 flex items-center justify-between shrink-0 z-30">
+        {/* Executive Top Bar - Warm White #FFFDF8 */}
+        <header className="h-16 bg-[#FFFDF8] border-b border-[#E9E1D4] px-8 flex items-center justify-between shrink-0 z-30">
           <div className="flex items-center gap-3">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#C5A880] font-mono">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#B08D57] font-mono font-semibold">
               Brokerage Advisory
             </span>
-            <span className="text-[#3A3A40] text-xs">•</span>
-            <span className="text-xs text-[#A3A3A8] font-medium uppercase tracking-wider">
+            <span className="text-[#E9E1D4] text-xs">•</span>
+            <span className="text-xs text-[#6B7280] font-medium uppercase tracking-wider">
               {navItems.find((n) => location.pathname.startsWith(n.path))?.label || 'Desk'}
             </span>
           </div>
@@ -176,11 +176,11 @@ export const BrokerLayout: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsNotifOpen(!isNotifOpen)}
-                className="relative p-2 text-[#A3A3A8] hover:text-[#C5A880] border border-[#2A2A2D] hover:border-[#C5A880] transition-colors"
+                className="relative p-2 text-[#3E4852] hover:text-[#102A43] border border-[#E9E1D4] hover:border-[#B08D57] bg-[#FFFDF8] transition-colors"
                 title="Lead & Viewing Notifications"
                 aria-label="Notifications"
               >
-                <Bell className="w-4 h-4 text-[#C5A880]" />
+                <Bell className="w-4 h-4 text-[#B08D57]" />
                 {unreadCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[9px] font-mono font-bold rounded-full min-w-[16px] h-4 px-1 flex items-center justify-center shadow-md animate-pulse">
                     {unreadCount > 9 ? '9+' : unreadCount}
@@ -190,15 +190,15 @@ export const BrokerLayout: React.FC = () => {
 
               {/* Notification Dropdown Panel */}
               {isNotifOpen && (
-                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-[#18181A] border border-[#2A2A2D] text-white shadow-2xl py-3 z-50">
-                  <div className="px-4 pb-2.5 border-b border-[#2A2A2D] flex items-center justify-between">
+                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-[#102A43] border border-[#1E3A5F] text-[#F7F3EA] shadow-2xl py-3 z-50">
+                  <div className="px-4 pb-2.5 border-b border-[#1E3A5F] flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Bell className="w-3.5 h-3.5 text-[#C5A880]" />
-                      <span className="font-serif text-sm text-white font-medium">
+                      <Bell className="w-3.5 h-3.5 text-[#B08D57]" />
+                      <span className="font-display text-sm text-[#F7F3EA] font-medium">
                         Broker Notifications
                       </span>
                       {unreadCount > 0 && (
-                        <span className="text-[10px] font-mono bg-[#C5A880] text-[#18181A] px-1.5 py-0.2 rounded-full font-bold">
+                        <span className="text-[10px] font-mono bg-[#B08D57] text-[#102A43] px-1.5 py-0.2 rounded-full font-bold">
                           {unreadCount} unread
                         </span>
                       )}
@@ -206,19 +206,19 @@ export const BrokerLayout: React.FC = () => {
                     {unreadCount > 0 && (
                       <button
                         onClick={() => markAllAsRead()}
-                        className="text-[10px] font-mono uppercase tracking-wider text-[#C5A880] hover:underline"
+                        className="text-[10px] font-mono uppercase tracking-wider text-[#D8C3A5] hover:underline"
                       >
                         Mark all read
                       </button>
                     )}
                   </div>
 
-                  <div className="max-h-80 overflow-y-auto divide-y divide-[#2A2A2D]/60 text-xs">
+                  <div className="max-h-80 overflow-y-auto divide-y divide-[#1E3A5F] text-xs">
                     {notifications.length === 0 ? (
-                      <div className="p-8 text-center text-[#71717A] space-y-1">
-                        <Bell className="w-8 h-8 mx-auto text-[#2A2A2D] mb-2" />
-                        <p className="text-xs text-[#A3A3A8]">No incoming notifications</p>
-                        <p className="text-[10px] text-[#71717A]">
+                      <div className="p-8 text-center text-[#E9E1D4]/60 space-y-1">
+                        <Bell className="w-8 h-8 mx-auto text-[#1E3A5F] mb-2" />
+                        <p className="text-xs text-[#E9E1D4]">No incoming notifications</p>
+                        <p className="text-[10px] text-[#E9E1D4]/60">
                           New client inquiries and viewing updates will appear here in real-time.
                         </p>
                       </div>
@@ -233,19 +233,19 @@ export const BrokerLayout: React.FC = () => {
                               setIsNotifOpen(false);
                             }
                           }}
-                          className={`p-3.5 hover:bg-[#212124] transition-colors cursor-pointer flex items-start gap-3 ${
-                            !notif.isRead ? 'bg-[#212124]/50 border-l-2 border-[#C5A880]' : ''
+                          className={`p-3.5 hover:bg-[#1E3A5F] transition-colors cursor-pointer flex items-start gap-3 ${
+                            !notif.isRead ? 'bg-[#1E3A5F]/50 border-l-2 border-[#B08D57]' : ''
                           }`}
                         >
-                          <div className="w-2 h-2 rounded-full bg-[#C5A880] mt-1.5 shrink-0" />
+                          <div className="w-2 h-2 rounded-full bg-[#B08D57] mt-1.5 shrink-0" />
                           <div className="flex-1 min-w-0">
-                            <span className="font-serif text-xs font-medium text-[#F7F5F0] block truncate">
+                            <span className="font-display text-xs font-medium text-[#F7F3EA] block truncate">
                               {notif.title}
                             </span>
-                            <p className="text-[11px] text-[#A3A3A8] line-clamp-2 mt-0.5 leading-relaxed">
+                            <p className="text-[11px] text-[#E9E1D4]/80 line-clamp-2 mt-0.5 leading-relaxed">
                               {notif.message}
                             </p>
-                            <span className="text-[9px] font-mono text-[#71717A] block mt-1">
+                            <span className="text-[9px] font-mono text-[#D8C3A5] block mt-1">
                               {new Date(notif.createdAt).toLocaleTimeString([], {
                                 hour: '2-digit',
                                 minute: '2-digit'
@@ -258,11 +258,11 @@ export const BrokerLayout: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="px-4 pt-2.5 border-t border-[#2A2A2D] text-center">
+                  <div className="px-4 pt-2.5 border-t border-[#1E3A5F] text-center">
                     <Link
                       to="/broker/leads"
                       onClick={() => setIsNotifOpen(false)}
-                      className="text-[10px] uppercase font-mono tracking-wider text-[#C5A880] hover:underline"
+                      className="text-[10px] uppercase font-mono tracking-wider text-[#D8C3A5] hover:underline"
                     >
                       View All Leads & Inquiries Pipeline →
                     </Link>
@@ -271,16 +271,16 @@ export const BrokerLayout: React.FC = () => {
               )}
             </div>
 
-            {/* Quick Status Pill */}
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-[#212124] border border-[#2A2A2D] text-[10px] font-mono text-[#A3A3A8]">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            {/* Quick Status Pill - Muted Sage for positive/complete/live status */}
+            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-[#5D7A65]/10 border border-[#5D7A65]/30 text-[10px] font-mono text-[#5D7A65]">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#5D7A65] animate-pulse" />
               <span>Broker Desk Live</span>
             </div>
           </div>
         </header>
 
-        {/* Page Content View */}
-        <main className="flex-1 overflow-y-auto bg-[#121214] p-8 lg:p-12">
+        {/* Page Content View - Warm Ivory #F7F3EA */}
+        <main className="flex-1 overflow-y-auto bg-[#F7F3EA] text-[#3E4852] p-8 lg:p-12">
           <Outlet />
         </main>
       </div>
