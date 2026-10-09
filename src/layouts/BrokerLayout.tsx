@@ -46,12 +46,10 @@ export const BrokerLayout: React.FC = () => {
 
   const navItems = [
     { label: 'Dashboard', path: '/broker/dashboard', icon: LayoutDashboard },
-    { label: 'My Listings', path: '/broker/properties', icon: Building2 },
-    { label: 'Leads Pipeline', path: '/broker/leads', icon: Users2, badgeCount: unreadCount },
-    { label: 'Client Workspace', path: '/broker/clients', icon: UserCheck },
-    { label: 'Viewings Schedule', path: '/broker/viewings', icon: Calendar },
+    { label: 'Lead Pipeline', path: '/broker/leads', icon: Users2, badgeCount: unreadCount },
     { label: 'Commissions', path: '/broker/commissions', icon: DollarSign },
     { label: 'Performance', path: '/broker/analytics', icon: BarChart3 },
+    { label: 'My Listings', path: '/broker/properties', icon: Building2 },
     { label: 'Broker Profile', path: '/broker/profile', icon: User }
   ];
 

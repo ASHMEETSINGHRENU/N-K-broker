@@ -47,6 +47,11 @@ export const brokerApi = {
     }),
   getLeads: (status?: string) =>
     fetchBrokerApi<{ success: boolean; leads: any[] }>(`/leads${status ? `?status=${status}` : ''}`),
+  createLead: (data: any) =>
+    fetchBrokerApi<{ success: boolean; lead: any; message?: string }>('/leads', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }),
   getLeadById: (id: string) =>
     fetchBrokerApi<{ success: boolean; lead: any; activities: any[]; score: any }>(`/leads/${id}`),
   updateLeadStatus: (id: string, status: string, details?: string) =>
