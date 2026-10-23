@@ -12,7 +12,10 @@ export const PROPERTY_TYPES = [
   'Bungalow',
   'Hotel & Hotel Apartment',
   'Mansion',
-  'Branded Residence'
+  'Branded Residence',
+  'Office',
+  'Warehouse',
+  'Shop'
 ] as const;
 
 export const LUXURY_COLLECTIONS = [
